@@ -1,0 +1,23 @@
+module.exports = {
+  content: ["_site/**/*.html", "_site/**/*.js"],
+  css: ["_site/assets/css/*.css"],
+  output: "_site/assets/css/",
+  skippedContentGlobs: ["_site/assets/**/*.html"],
+  safelist: [
+    "back-to-top",
+    "collapse",
+    "collapsing",
+    "show",
+    "dropdown-menu",
+    "dropdown-item",
+    "table",
+    "table-dark",
+    "table-hover",
+    "table-responsive",
+    "af-tooltip",
+    "af-popover",
+    "font-weight-bold",
+    "font-weight-medium",
+    "font-weight-lighter",
+  ],
+};

@@ -1,0 +1,50 @@
+cv:
+  name: Xianghui Liao
+  label: Incoming M.Sc. in Artificial Intelligence
+  email: weichengliao08@gmail.com
+  location: Shanghai, China
+  image: ""
+  summary: Incoming M.Sc. student in Artificial Intelligence at Shanghai University, having received my B.Sc. in Computer Science from Southwest Forestry University in 2026. My research interests center on vision-language models (VLMs) and model compression.
+
+  sections:
+    Education:
+      - institution: Shanghai University
+        location: Shanghai, China
+        url: https://www.shu.edu.cn/
+        area: Artificial Intelligence
+        studyType: M.Sc.
+        start_date: 2026
+        end_date: 2029
+
+      - institution: Southwest Forestry University
+        location: Kunming, China
+        url: https://www.swfu.edu.cn/
+        area: Computer Science and Technology
+        studyType: B.Sc.
+        start_date: 2022
+        end_date: 2026
+
+    Experience:
+      - company: Yunnan Provincial College Students' Innovation and Entrepreneurship Training Program
+        position: Project Leader
+        location: Kunming, China
+        start_date: 2023-06-01
+        end_date: 2025-06-01
+        summary: Led the development of a ResNet-based traceability and identification system for wild mushrooms.
+        highlights:
+          - Built a cross-regional dataset of 2,054 fruiting-body samples spanning 21 wild mushroom species.
+          - Designed the overall project plan and the residual neural network (ResNet) model framework.
+          - Curated a 637-image dataset and coordinated the end-to-end deep learning training pipeline.
+
+    Publications:
+      - title: An Effective Approach for Boletus Species Identification using a Frequency-Enhanced Swin Transformer
+        authors:
+          - Xianghui Liao
+          - Jianjin Yan
+          - Fuyang Xie
+          - Zhe Li
+          - Qingli Yan
+        publisher: 2025 IEEE 2nd International Conference on Big Data Science and Engineering (ICBDSE)
+        releaseDate: 2025-06-01
+        url: https://doi.org/10.1109/ICBDSE65491.2025.11220122
+        summary: A frequency-enhanced Swin Transformer that improves fine-grained identification of boletus species.

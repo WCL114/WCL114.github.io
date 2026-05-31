@@ -1,0 +1,84 @@
+_site
+.bundle
+.DS_store
+.idea
+.jekyll-cache
+.jekyll-metadata
+.ruby-version
+.sass-cache
+.tweet-cache
+.venv
+assets/libs/
+assets/rendercv/rendercv_output/*.typ
+al-folio-upgrade-report.md
+node_modules/
+output/playwright/
+test-results/
+vendor
+
+# Private resume (contains personal phone number, do not publish)
+个人简历.pdf
+
+# Local cache (resume text extraction, etc.)
+.cache/
+
+# -----------------------------------------------------------------------------
+# Exclude non-website files from the published repo (kept locally)
+# -----------------------------------------------------------------------------
+
+# AI collaboration / agent files
+AGENTS.md
+CLAUDE.md
+.agents/
+.claude/
+.codex/
+.gemini/
+.github/copilot-instructions.md
+.github/instructions/
+.github/workflows/copilot-setup-steps.yml
+
+# Heavy CI workflows not needed for GitHub Pages deploy
+.github/workflows/axe.yml
+.github/workflows/broken-links.yml
+.github/workflows/broken-links-site.yml
+.github/workflows/codeql.yml
+.github/workflows/deploy-docker-tag.yml
+.github/workflows/deploy-image.yml
+.github/workflows/docker-slim.yml
+.github/workflows/lighthouse-badger.yml
+.github/workflows/prettier.yml
+.github/workflows/prettier-html.yml
+.github/workflows/prettier-comment-on-pr.yml
+.github/workflows/unit-tests.yml
+.github/workflows/visual-regression.yml
+.github/workflows/upgrade-check.yml
+.github/workflows/schedule-posts.txt
+
+# Dev tooling / docker / docs / tests (not part of the site)
+.pre-commit-config.yaml
+.all-contributorsrc
+Dockerfile
+docker-compose.yml
+docker-compose-slim.yml
+.dockerignore
+docs/
+test/
+lighthouse_results/
+readme_preview/
+.lycheeignore
+.prettierignore
+.prettierrc
+.git-blame-ignore-revs
+
+# al-folio maintenance scripts (keep only the citation updater used by CI)
+bin/al-folio
+bin/cibuild
+bin/deploy
+bin/entry_point.sh
+bin/setup-python-deps
+
+# VS Code dev container (not part of the site)
+.devcontainer/
+
+# Disabled: RenderCV PDF generation (not used; no PDF download button)
+.github/workflows/render-cv.yml

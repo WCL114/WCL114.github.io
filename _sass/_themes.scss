@@ -1,0 +1,137 @@
+// Local theme override (al-folio v1.x): define ONLY the variables/rules we want to change.
+// Per docs/CUSTOMIZE.md, local _sass overrides are appended on top of gem defaults.
+
+// --- Theme color: switch the default purple accent to blue ---
+:root {
+  --global-theme-color: #0076df;
+  --global-hover-color: #0076df;
+}
+
+html[data-theme="dark"] {
+  --global-theme-color: #4e9bff;
+  --global-hover-color: #4e9bff;
+}
+
+// --- 1. Remove the navbar's bottom divider line for a cleaner header ---
+// (The full-width blue line that crossed the page was the scroll progress bar,
+//  disabled via `enable_progressbar: false` in _config.yml.)
+#navbar.navbar,
+nav#navbar,
+.navbar.sticky-top {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+// --- 2. Capitalize navbar links (about -> About, publications -> Publications) ---
+.navbar .nav-item .nav-link {
+  text-transform: capitalize;
+}
+
+// --- 3. Shrink the oversized social icons (email, RSS) on the about page ---
+.social .contact-icons a i,
+.social .contact-icons i {
+  font-size: 1.5rem;
+}
+
+// --- 5. CV timeline: white text inside the blue date badges ---
+// gem rule `.cv .card .list-group-item .badge` (4 levels) wins on specificity,
+// so we match/exceed it here. html[data-theme] adds extra specificity for safety.
+html .cv .card .list-group-item .badge,
+html[data-theme="light"] .cv .card .list-group-item .badge,
+html[data-theme="dark"] .cv .card .list-group-item .badge {
+  color: #fff !important;
+}
+
+// White text inside the publication abbreviation badges (e.g. ICBDSE).
+// gem rule `.publications ol.bibliography li .abbr abbr` (0,0,3,3) wins, so match/exceed it.
+html .publications ol.bibliography li .abbr abbr,
+html[data-theme="light"] .publications ol.bibliography li .abbr abbr,
+.publications ol.bibliography li .abbr abbr,
+.abbr abbr {
+  color: #fff !important;
+}
+
+// --- Back-to-top button (vanilla-back-to-top injects id="back-to-top" at runtime) ---
+// The library renders an inline <svg> arrow centered with `margin: 16px auto 0`, a value
+// derived from its default 56px diameter. The earlier override only shrank the button, so
+// that margin stayed put and pushed the arrow below center (and the button stayed black).
+// Reclaim full control: a theme-colored circle with the arrow flex-centered, which no
+// longer depends on the library's diameter math.
+#back-to-top {
+  width: 2.75rem !important;
+  height: 2.75rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  background: var(--global-theme-color) !important;
+  color: #fff !important;
+}
+
+#back-to-top svg {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  margin: 0 !important; // cancel vanilla's diameter-based margin: 16px auto 0
+}
+
+#back-to-top:hover {
+  background: var(--global-hover-color) !important;
+}
+
+// Match the hidden offset to the new diameter (the library default is -56px).
+#back-to-top.hidden {
+  bottom: -2.75rem !important;
+}
+
+// --- Keep the social block close to the publications, and let the footer follow content ---
+.profile-content .social,
+article .social,
+.social {
+  padding-top: 2rem !important;
+  margin-top: 0 !important;
+}
+
+// Pull the copyright line up against the social block. Two separate spacings stack here:
+//  - the footer's 40px TOP PADDING (gem-owned, NOT !important) — a plain override wins it;
+//  - the footer's 48px TOP MARGIN from the `mt-5` utility, which Tailwind v4 emits as
+//    `!important` INSIDE `@layer utilities`. Per the cascade, a LAYERED !important beats an
+//    UNLAYERED one regardless of selector specificity, so a plain
+//    `footer.sticky-bottom{margin-top:0!important}` silently loses (verified live in DevTools).
+//    The margin must be zeroed from WITHIN the same layer, where our higher specificity
+//    (0,1,1) outranks `.mt-5` (0,1,0).
+footer.sticky-bottom {
+  padding-top: 1rem !important;
+}
+
+@layer utilities {
+  footer.sticky-bottom {
+    margin-top: 0 !important;
+  }
+}
+
+// --- 6. CV timeline: remove the default list bullet for a clean left edge ---
+.cv .card .list-group-flush,
+.cv .card .list-group-flush .list-group-item {
+  list-style: none !important;
+}
+
+// --- 7. Make the DOI / publication buttons look clean as outlined blue buttons ---
+// Note: flat (non-nested) selectors so the Tailwind-based pipeline keeps them.
+.publications .btn,
+.bibliography .btn,
+.links .btn {
+  color: var(--global-theme-color) !important;
+  border: 1px solid var(--global-theme-color) !important;
+  background-color: transparent !important;
+  border-radius: 5px !important;
+  padding: 0.25rem 0.75rem !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.publications .btn:hover,
+.bibliography .btn:hover,
+.links .btn:hover {
+  color: #fff !important;
+  background-color: var(--global-theme-color) !important;
+  border-color: var(--global-theme-color) !important;
+}
